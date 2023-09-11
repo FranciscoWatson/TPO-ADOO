@@ -1,3 +1,3 @@
-public class Ejemplar {
+public interface Ejemplar {
 
 }
