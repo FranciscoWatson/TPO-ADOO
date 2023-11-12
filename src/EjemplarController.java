@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class EjemplarController {
     private ArrayList<Ejemplar> ejemplares = new ArrayList<>();
@@ -37,11 +38,11 @@ public class EjemplarController {
     public ArrayList<Integer> buscarEjemplar(String busqueda) {
         ArrayList<Integer> candidatos = null;
         for(int i = 0; i < ejemplares.size(); i++){
-            if (ejemplares.get(i).obtenerTitulo() == busqueda){
+            if (Objects.equals(ejemplares.get(i).obtenerTitulo(), busqueda) && ejemplares.get(i).obtenerEstado()){
                 candidatos.add(ejemplares.get(i).obtenerIdEjemplar());
-            } else if (ejemplares.get(i).obtenerCategoria() == busqueda) {
+            } else if (Objects.equals(ejemplares.get(i).obtenerCategoria(), busqueda) && ejemplares.get(i).obtenerEstado()) {
                 candidatos.add(ejemplares.get(i).obtenerIdEjemplar());
-            } else if (ejemplares.get(i).obtenerAutor() == busqueda) {
+            } else if (Objects.equals(ejemplares.get(i).obtenerAutor(), busqueda) && ejemplares.get(i).obtenerEstado()) {
                 candidatos.add(ejemplares.get(i).obtenerIdEjemplar());
             }
         }

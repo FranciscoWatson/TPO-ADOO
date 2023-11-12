@@ -12,6 +12,7 @@ public class Socio {
     private EstrategiaNotificacion notificacion;
     private DataLog dataLog;
 
+
     public Socio(int idBiblotecario, String nombre, String apellido, double dni, String mail, double telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -24,5 +25,14 @@ public class Socio {
 
     public double obtenerDni() {
         return dni;
+    }
+
+    public void pedirPrestamo(Prestamo prestamo) {
+        prestamos.add(prestamo);
+    }
+
+    public void notificarVencimiento() {
+        // CREAR MENSAJE + NOTIFICAR A LA ESTRATEGIA
+      //  factoryMensajeVencimiento.crearMensaje()
     }
 }

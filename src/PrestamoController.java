@@ -5,5 +5,14 @@ public class PrestamoController {
 
     public void pedirPrestamo(int idBiblotecario, Socio socio, Ejemplar ejemplar) {
         Prestamo nuevoPrestamo = new Prestamo(idBiblotecario, socio, ejemplar);
+        prestamos.add(nuevoPrestamo);
+    }
+
+    public void devolverPrestamo(int idPrestamo) {
+        for(int i = 0; i < prestamos.size(); i++){
+            if (prestamos.get(i).obtenerIdPrestamo() == idPrestamo){
+                 prestamos.get(i).devolverPrestamo();
+            }
+        }
     }
 }

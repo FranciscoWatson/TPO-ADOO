@@ -32,5 +32,7 @@ public class SistemaBibloteca {
     public ArrayList<Integer> buscarEjemplar(String busqueda){
         return ejemplarController.buscarEjemplar(busqueda);
     }
-
+    public void devolverPrestamo(int idPrestamo){
+        prestamoController.devolverPrestamo(idPrestamo);
+    }
 }
