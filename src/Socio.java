@@ -21,4 +21,8 @@ public class Socio {
         estado = new Habilitado();
         notificacion = new NotificacionEmail();
     }
+
+    public double obtenerDni() {
+        return dni;
+    }
 }

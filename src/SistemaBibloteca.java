@@ -9,16 +9,23 @@ public class SistemaBibloteca {
         socioController.nuevoSocio(idBiblotecario, nombre, apellido, dni, mail, telefono);
 
     }
-    private void nuevoRevistaEspecializada(String titulo, String autor, int diasPrestamo, Date fechaPublicacion, String categoria, int idEjemplar){
+    public void nuevoRevistaEspecializada(String titulo, String autor, int diasPrestamo, Date fechaPublicacion, String categoria, int idEjemplar){
         ejemplarController.nuevoRevistaEspecializada(titulo, autor, diasPrestamo, fechaPublicacion, categoria, idEjemplar);
     }
-    private void nuevoDiario(String titulo, String autor, int diasPrestamo, Date fechaPublicacion, String categoria, int idEjemplar){
+    public void nuevoDiario(String titulo, String autor, int diasPrestamo, Date fechaPublicacion, String categoria, int idEjemplar){
         ejemplarController.nuevoDiario(titulo, autor, diasPrestamo, fechaPublicacion, categoria, idEjemplar);
     }
-    private void nuevoLibro(String titulo, String autor, int diasPrestamo, Date fechaPublicacion, String categoria, int idEjemplar){
+    public void nuevoLibro(String titulo, String autor, int diasPrestamo, Date fechaPublicacion, String categoria, int idEjemplar){
         ejemplarController.nuevoLibro(titulo, autor, diasPrestamo, fechaPublicacion, categoria, idEjemplar);
     }
-    private void nuevoRevista(String titulo, String autor, int diasPrestamo, Date fechaPublicacion, String categoria, int idEjemplar){
+    public void nuevoRevista(String titulo, String autor, int diasPrestamo, Date fechaPublicacion, String categoria, int idEjemplar){
         ejemplarController.nuevoRevista(titulo, autor, diasPrestamo, fechaPublicacion, categoria, idEjemplar);
     }
+    public void pedirPrestamo(int idBiblotecario, double dni, int idEjemplar){
+        Socio socio = socioController.obtenerSocio(dni);
+        Ejemplar ejemplar = ejemplarController.obtenerEjemplar(idEjemplar);
+        prestamoController.pedirPrestamo(idBiblotecario, socio, ejemplar);
+
+    }
+
 }

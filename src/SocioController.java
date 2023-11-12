@@ -7,4 +7,14 @@ public class SocioController {
         Socio nuevoSocio = new Socio(idBiblotecario, nombre, apellido, dni, mail, telefono);
         socios.add(nuevoSocio);
     }
+
+    public Socio obtenerSocio(double dni) {
+        for(int i = 0; i < socios.size(); i++){
+            if (socios.get(i).obtenerDni() == dni){
+                return socios.get(i);
+            }
+        }
+
+        return null;
+    }
 }

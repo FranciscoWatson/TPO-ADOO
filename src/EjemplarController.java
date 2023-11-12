@@ -24,4 +24,13 @@ public class EjemplarController {
         Ejemplar nuevoEjemplar = new Revista(titulo, autor, diasPrestamo, fechaPublicacion, categoria, idEjemplar);
         ejemplares.add(nuevoEjemplar);
     }
+
+    public Ejemplar obtenerEjemplar(int idEjemplar) {
+        for(int i = 0; i < ejemplares.size(); i++){
+            if (ejemplares.get(i).obtenerIdEjemplar() == idEjemplar){
+                return ejemplares.get(i);
+            }
+        }
+        return null;
+    }
 }
