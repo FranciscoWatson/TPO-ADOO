@@ -33,4 +33,18 @@ public class EjemplarController {
         }
         return null;
     }
+
+    public ArrayList<Integer> buscarEjemplar(String busqueda) {
+        ArrayList<Integer> candidatos = null;
+        for(int i = 0; i < ejemplares.size(); i++){
+            if (ejemplares.get(i).obtenerTitulo() == busqueda){
+                candidatos.add(ejemplares.get(i).obtenerIdEjemplar());
+            } else if (ejemplares.get(i).obtenerCategoria() == busqueda) {
+                candidatos.add(ejemplares.get(i).obtenerIdEjemplar());
+            } else if (ejemplares.get(i).obtenerAutor() == busqueda) {
+                candidatos.add(ejemplares.get(i).obtenerIdEjemplar());
+            }
+        }
+        return candidatos;
+    }
 }
