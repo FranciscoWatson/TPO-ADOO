@@ -35,7 +35,8 @@ public class EjemplarController {
         return null;
     }
 
-    public ArrayList<Integer> buscarEjemplar(String busqueda) {
+    @SuppressWarnings("null")
+	public ArrayList<Integer> buscarEjemplar(String busqueda) {
         ArrayList<Integer> candidatos = null;
         for(int i = 0; i < ejemplares.size(); i++){
             if (Objects.equals(ejemplares.get(i).obtenerTitulo(), busqueda) && ejemplares.get(i).obtenerEstado()){
@@ -47,5 +48,12 @@ public class EjemplarController {
             }
         }
         return candidatos;
+    }
+    
+    public ArrayList<Integer> buscarUbicacion(int idEjemplar) {
+    	Ejemplar ejemplar = obtenerEjemplar(idEjemplar);
+    	ArrayList<Integer> filaColumna = ejemplar.obtenerUbicacion();
+    	return filaColumna;
+    	
     }
 }
