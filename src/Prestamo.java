@@ -1,11 +1,11 @@
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Prestamo implements Observador{
     private int idPrestamo;
     private int idBiblotecario;
     private Socio socio;
     private Ejemplar ejemplar;
-    private Date fechaVencimiento;
+    private LocalDate fechaVencimiento;
     public Prestamo(int idBiblotecario, Socio socio, Ejemplar ejemplar) {
         this.idBiblotecario = idBiblotecario;
         this.socio = socio;
@@ -26,7 +26,11 @@ public class Prestamo implements Observador{
 
     @Override
     public void actualizarFecha(Sujeto sujeto) {
-        socio.notificarVencimiento();
+        socio.notificarVencimiento(this);
 
+    }
+
+    public Ejemplar obtenerEjemplar() {
+        return ejemplar;
     }
 }

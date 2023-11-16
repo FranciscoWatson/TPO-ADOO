@@ -1,27 +1,28 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class EjemplarController {
     private ArrayList<Ejemplar> ejemplares = new ArrayList<>();
 
 
-    public void nuevoRevistaEspecializada(String titulo, String autor, int diasPrestamo, Date fechaPublicacion, String categoria, int idEjemplar) {
+    public void nuevoRevistaEspecializada(String titulo, String autor, int diasPrestamo, LocalDate fechaPublicacion, String categoria, int idEjemplar) {
         Ejemplar nuevoEjemplar = new RevistaEspecializada(titulo, autor, diasPrestamo, fechaPublicacion, categoria, idEjemplar);
         ejemplares.add(nuevoEjemplar);
     }
 
-    public void nuevoDiario(String titulo, String autor, int diasPrestamo, Date fechaPublicacion, String categoria, int idEjemplar) {
+    public void nuevoDiario(String titulo, String autor, int diasPrestamo, LocalDate fechaPublicacion, String categoria, int idEjemplar) {
         Ejemplar nuevoEjemplar = new Diario(titulo, autor, diasPrestamo, fechaPublicacion, categoria, idEjemplar);
         ejemplares.add(nuevoEjemplar);
     }
 
-    public void nuevoLibro(String titulo, String autor, int diasPrestamo, Date fechaPublicacion, String categoria, int idEjemplar) {
+    public void nuevoLibro(String titulo, String autor, int diasPrestamo, LocalDate fechaPublicacion, String categoria, int idEjemplar) {
         Ejemplar nuevoEjemplar = new Libro(titulo, autor, diasPrestamo, fechaPublicacion, categoria, idEjemplar);
         ejemplares.add(nuevoEjemplar);
     }
 
-    public void nuevoRevista(String titulo, String autor, int diasPrestamo, Date fechaPublicacion, String categoria, int idEjemplar) {
+    public void nuevoRevista(String titulo, String autor, int diasPrestamo, LocalDate fechaPublicacion, String categoria, int idEjemplar) {
         Ejemplar nuevoEjemplar = new Revista(titulo, autor, diasPrestamo, fechaPublicacion, categoria, idEjemplar);
         ejemplares.add(nuevoEjemplar);
     }

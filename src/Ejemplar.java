@@ -1,12 +1,15 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public abstract class Ejemplar {
-    private int idEjemplar;
-    private String titulo;
-    private String categoria;
-    private String autor;
-    private boolean estadoEjemplar;
-    private Ubicacion ubicacion;
+    protected int idEjemplar;
+    protected String titulo;
+    protected String categoria;
+    protected String autor;
+    protected boolean estadoEjemplar;
+    protected Ubicacion ubicacion;
+    protected int diasPrestamo;
+    protected LocalDate fechaPublicacion;
     public int obtenerIdEjemplar() {
         return idEjemplar;
     }

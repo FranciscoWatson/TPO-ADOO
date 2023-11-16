@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Socio {
@@ -12,6 +13,7 @@ public class Socio {
     private EstrategiaNotificacion notificacion;
     private DataLog dataLog;
     private MedioFavorito medioFav;
+    private ArrayList<Mensaje> mensajesEnviados = new ArrayList<>();
 
 
     public Socio(int idBiblotecario, String nombre, String apellido, double dni, String mail, double telefono,MedioFavorito medioFav) {
@@ -33,7 +35,11 @@ public class Socio {
         prestamos.add(prestamo);
     }
 
-    public void notificarVencimiento() {
+    public void notificarVencimiento(Prestamo prestamo) {
+        LocalDate currentDate = LocalDate.now();
+        Mensaje mensaje = new MensajeVencimiento(currentDate, prestamo);
+        mensajesEnviados.add(mensaje);
+        notificacion.enviarNotificacion(mensaje.obtenerMensaje(), this);
         // CREAR MENSAJE + NOTIFICAR A LA ESTRATEGIA
     	//  factoryMensajeVencimiento.crearMensaje()
     }
@@ -72,5 +78,12 @@ public class Socio {
     	this.medioFav = medioFavNuevo;
     	
     }
-  
+
+    public String obtenerEmail() {
+        return mail;
+    }
+
+    public double obtenerTelefono() {
+        return telefono;
+    }
 }

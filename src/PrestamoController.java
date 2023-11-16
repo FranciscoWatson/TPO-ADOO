@@ -6,6 +6,8 @@ public class PrestamoController {
     public void pedirPrestamo(int idBiblotecario, Socio socio, Ejemplar ejemplar) {
         Prestamo nuevoPrestamo = new Prestamo(idBiblotecario, socio, ejemplar);
         prestamos.add(nuevoPrestamo);
+        Calendario calendario = new Calendario();
+        calendario.agregarObservador(nuevoPrestamo);
     }
 
     public void devolverPrestamo(int idPrestamo) {

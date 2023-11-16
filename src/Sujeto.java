@@ -1,7 +1,20 @@
 import java.util.ArrayList;
 
 public abstract class Sujeto {
-    private ArrayList<Observador> observadores;
+    protected ArrayList<Observador> observadores;
+    protected static Sujeto instance;
+
+    Sujeto() {
+        observadores = new ArrayList<>();
+    }
+
+    public static synchronized Sujeto getInstance() {
+        if (instance == null) {
+            instance = new Sujeto() {
+            };
+        }
+        return instance;
+    }
     public void agregarObservador(Observador observador){
         observadores.add(observador);
     }
