@@ -5,12 +5,14 @@ import java.time.LocalDate;
 public class Main {
     private static SistemaBibloteca sistemaBibloteca;
     public static void main(String[] args) {
-        sistemaBibloteca = new SistemaBibloteca();
         Calendario calendario = new Calendario();
+        sistemaBibloteca = new SistemaBibloteca(calendario);
+
         sistemaBibloteca.nuevoSocio(1, "Juan", "Perez", 12354698, "juanperez@gmail.com", 13235686);
         sistemaBibloteca.nuevoLibro("Harry Potter", "asd", 3, LocalDate.of(2010,2,2), "accion", 1);
         sistemaBibloteca.nuevoLibro("El señol de los anillos", "Jose", 3, LocalDate.of(2023, 11, 16), "accion", 2);
-        sistemaBibloteca.pedirPrestamo(1, 12354698, 1);
+        sistemaBibloteca.pedirPrestamo(1, 12354698, 1, LocalDate.of(2023, 11, 22));
+        sistemaBibloteca.devolverPrestamo(1);
         calendario.cambioDia();
 
 

@@ -11,6 +11,12 @@ public class SistemaBibloteca {
         ejemplarController = new EjemplarController();
         socioController = new SocioController();
     }
+    public SistemaBibloteca(Calendario calendario){
+        prestamoController = new PrestamoController(calendario);
+        ejemplarController = new EjemplarController();
+        socioController = new SocioController();
+
+    }
 
     public void nuevoSocio(int idBiblotecario, String nombre, String apellido, double dni, String mail, double telefono){
         socioController.nuevoSocio(idBiblotecario, nombre, apellido, dni, mail, telefono);
@@ -28,10 +34,10 @@ public class SistemaBibloteca {
     public void nuevoRevista(String titulo, String autor, int diasPrestamo, LocalDate fechaPublicacion, String categoria, int idEjemplar){
         ejemplarController.nuevoRevista(titulo, autor, diasPrestamo, fechaPublicacion, categoria, idEjemplar);
     }
-    public void pedirPrestamo(int idBiblotecario, double dni, int idEjemplar){
+    public void pedirPrestamo(int idBiblotecario, double dni, int idEjemplar, LocalDate fechaVencimiento){
         Socio socio = socioController.obtenerSocio(dni);
         Ejemplar ejemplar = ejemplarController.obtenerEjemplar(idEjemplar);
-        prestamoController.pedirPrestamo(idBiblotecario, socio, ejemplar);
+        prestamoController.pedirPrestamo(idBiblotecario, socio, ejemplar, fechaVencimiento);
 
 
     }

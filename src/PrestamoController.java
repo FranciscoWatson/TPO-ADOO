@@ -1,12 +1,20 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PrestamoController {
     private ArrayList<Prestamo> prestamos = new ArrayList<>();
+    Calendario calendario;
 
-    public void pedirPrestamo(int idBiblotecario, Socio socio, Ejemplar ejemplar) {
-        Prestamo nuevoPrestamo = new Prestamo(idBiblotecario, socio, ejemplar);
+    public PrestamoController(Calendario calendario) {
+        this.calendario = calendario;
+    }
+    public PrestamoController() {
+    }
+
+
+    public void pedirPrestamo(int idBiblotecario, Socio socio, Ejemplar ejemplar, LocalDate fechaVencimiento) {
+        Prestamo nuevoPrestamo = new Prestamo(idBiblotecario, socio, ejemplar, fechaVencimiento);
         prestamos.add(nuevoPrestamo);
-        Calendario calendario = new Calendario();
         calendario.agregarObservador(nuevoPrestamo);
     }
 

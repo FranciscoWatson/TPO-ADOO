@@ -1,3 +1,5 @@
 public interface Observador {
-    void actualizarFecha(Sujeto sujeto);
+
+
+    void actualizarFecha(Calendario sujeto);
 }

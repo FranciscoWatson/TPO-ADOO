@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Prestamo implements Observador{
     private int idPrestamo;
@@ -6,10 +7,11 @@ public class Prestamo implements Observador{
     private Socio socio;
     private Ejemplar ejemplar;
     private LocalDate fechaVencimiento;
-    public Prestamo(int idBiblotecario, Socio socio, Ejemplar ejemplar) {
+    public Prestamo(int idBiblotecario, Socio socio, Ejemplar ejemplar, LocalDate fechaVencimiento) {
         this.idBiblotecario = idBiblotecario;
         this.socio = socio;
         this.ejemplar = ejemplar;
+        this.fechaVencimiento = fechaVencimiento;
         ejemplar.solicitarEjemplar();
         socio.pedirPrestamo(this);
     }
@@ -20,13 +22,16 @@ public class Prestamo implements Observador{
 
     public void devolverPrestamo() {
         ejemplar.devolverEjemplar();
-       // agregar contador penalizaciones
-        //socio.devolverPrestamo();
+        socio.devolverPrestamo(this);
     }
 
     @Override
-    public void actualizarFecha(Sujeto sujeto) {
-        socio.notificarVencimiento(this);
+    public void actualizarFecha(Calendario calendario) {
+        long diferenciaEnDias = ChronoUnit.DAYS.between(calendario.obtenerFecha(), fechaVencimiento);
+        if ( diferenciaEnDias <= 2 ){
+            socio.notificarVencimiento(this);
+        }
+
 
     }
 

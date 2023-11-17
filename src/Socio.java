@@ -23,8 +23,9 @@ public class Socio {
         this.mail = mail;
         this.telefono = telefono;
         this.medioFav = medioFav;
-        estado = new Habilitado();
-        notificacion = new NotificacionEmail();
+        this.contadorPenalizaciones = 0;
+        estado = new Habilitado(this);
+        notificacion = new NotificacionWhatsApp();
     }
 
     public double obtenerDni() {
@@ -85,5 +86,11 @@ public class Socio {
 
     public double obtenerTelefono() {
         return telefono;
+    }
+
+    public void devolverPrestamo(Prestamo prestamo) {
+
+        estado.devolverPrestamo(prestamo, this);
+
     }
 }
