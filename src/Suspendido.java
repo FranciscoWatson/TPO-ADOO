@@ -4,6 +4,6 @@ public class Suspendido extends EstadoSocio{
 		this.socio = socio;
 	}
 	public void devolverPrestamo(Prestamo prestamo, Socio socio) {
-	
+		
 	}
 }

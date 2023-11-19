@@ -12,10 +12,22 @@ public class PrestamoController {
     }
 
 
-    public void pedirPrestamo(int idBiblotecario, Socio socio, Ejemplar ejemplar, LocalDate fechaVencimiento) {
-        Prestamo nuevoPrestamo = new Prestamo(idBiblotecario, socio, ejemplar, fechaVencimiento);
-        prestamos.add(nuevoPrestamo);
-        calendario.agregarObservador(nuevoPrestamo);
+    public void pedirPrestamo(int idBiblotecario, Socio socio, Ejemplar ejemplar) {
+    	if(socio.obtenerDiasHabiles() == -10) {
+    		System.out.println("Este usuario se encuentra suspendido.");
+    	}
+    	
+    	else {
+    		if((ejemplar.obtenerDiasPrestamo() + socio.obtenerDiasHabiles()) <= 0) {
+        		System.out.println("El usuario tiene demasiadas penalizaciones para este libro.");
+        	}
+    		else {
+    			int idPrestamo = prestamos.size() + 1;
+		        Prestamo nuevoPrestamo = new Prestamo(idBiblotecario, socio, ejemplar, idPrestamo);
+		        prestamos.add(nuevoPrestamo);
+		        calendario.agregarObservador(nuevoPrestamo);
+    		}
+    	}
     }
 
     public void devolverPrestamo(int idPrestamo) {

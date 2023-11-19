@@ -33,6 +33,10 @@ public abstract class Ejemplar {
     public boolean obtenerEstado() {
         return estadoEjemplar;
     }
+    
+    public int obtenerDiasPrestamo() {
+        return diasPrestamo;
+    }
 
     public void devolverEjemplar() {
         estadoEjemplar = true;
