@@ -15,7 +15,7 @@ public class Ubicacion {
 	}
 
 
-	public ArrayList<Integer> obtenerUbicacion(){
+	public ArrayList<Integer> getUbicacion(){
 		return adapter.adaptarUbicacion(fila, columna);
 	}
 

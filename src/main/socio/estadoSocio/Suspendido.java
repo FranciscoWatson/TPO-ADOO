@@ -1,6 +1,7 @@
-package main.socio;
+package main.socio.estadoSocio;
 
 import main.prestamo.Prestamo;
+import main.socio.Socio;
 
 import java.time.LocalDate;
 

@@ -2,7 +2,7 @@ package main.Facade;
 
 import main.ejemplar.Ejemplar;
 import main.ejemplar.EjemplarController;
-import main.prestamo.Calendario;
+import main.prestamo.observer.Calendario;
 import main.prestamo.PrestamoController;
 import main.socio.Socio;
 import main.socio.SocioController;
@@ -52,8 +52,8 @@ public class SistemaBiblioteca {
         ejemplarController.nuevoRevista(titulo, autor, diasPrestamo, fechaPublicacion, categoria, idEjemplar, fila, columna);
     }
     public void pedirPrestamo(int idBiblotecario, int dni, int idEjemplar){
-        Socio socio = socioController.obtenerSocio(dni);
-        Ejemplar ejemplar = ejemplarController.obtenerEjemplar(idEjemplar);
+        Socio socio = socioController.getSocio(dni);
+        Ejemplar ejemplar = ejemplarController.getEjemplar(idEjemplar);
         prestamoController.pedirPrestamo(idBiblotecario, socio, ejemplar);
 
     }
@@ -64,15 +64,15 @@ public class SistemaBiblioteca {
         prestamoController.devolverPrestamo(idPrestamo);
     }
 
-    public SocioController obtenerSocioController(){
+    public SocioController getSocioController(){
         return socioController;
     }
 
-    public EjemplarController obtenerEjemplarControler() {
+    public EjemplarController getEjemplarController() {
         return ejemplarController;
     }
 
-    public PrestamoController obtenerPrestamoController() {
+    public PrestamoController getPrestamoController() {
         return prestamoController;
     }
 
@@ -86,5 +86,19 @@ public class SistemaBiblioteca {
     }
     public void cambiarDiasPrestamo(int idEjemplar, int diasPrestamo){
         ejemplarController.cambiarDiasPrestamo(idEjemplar, diasPrestamo);
+    }
+    public void getModificaciones(double dni){
+        ArrayList<String>modificaciones = socioController.getModificaciones(dni);
+        for (int i = 0; i < modificaciones.size(); i++){
+            System.out.println(modificaciones.get(i));
+        }
+
+    }
+
+    public void cambiarNombreSocio(int idBiblotecario, String nuevoNombre, double dni){
+        socioController.setNombre(idBiblotecario, nuevoNombre, dni);
+    }
+    public void cambiarApellidoSocio(int idBiblotecario, String nuevoApellido, double dni){
+        socioController.setApellido(idBiblotecario, nuevoApellido, dni);
     }
 }

@@ -9,4 +9,8 @@ public class DataLog {
 	 public void registrarModificacion(String log) {
 		 modificaciones.add(log);
 	 }
+
+	 public ArrayList<String> getModificaciones(){
+		 return modificaciones;
+	 }
 }

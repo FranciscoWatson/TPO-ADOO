@@ -28,9 +28,9 @@ public class EjemplarController {
         ejemplares.add(nuevoEjemplar);
     }
 
-    public Ejemplar obtenerEjemplar(int idEjemplar) {
+    public Ejemplar getEjemplar(int idEjemplar) {
         for(int i = 0; i < ejemplares.size(); i++){
-            if (ejemplares.get(i).obtenerIdEjemplar() == idEjemplar){
+            if (ejemplares.get(i).getIdEjemplar() == idEjemplar){
                 return ejemplares.get(i);
             }
         }
@@ -41,12 +41,12 @@ public class EjemplarController {
 	public ArrayList<Integer> buscarEjemplar(String busqueda) {
         ArrayList<Integer> candidatos = null;
         for(int i = 0; i < ejemplares.size(); i++){
-            if (Objects.equals(ejemplares.get(i).obtenerTitulo(), busqueda) && ejemplares.get(i).obtenerEstado()){
-                candidatos.add(ejemplares.get(i).obtenerIdEjemplar());
-            } else if (Objects.equals(ejemplares.get(i).obtenerCategoria(), busqueda) && ejemplares.get(i).obtenerEstado()) {
-                candidatos.add(ejemplares.get(i).obtenerIdEjemplar());
-            } else if (Objects.equals(ejemplares.get(i).obtenerAutor(), busqueda) && ejemplares.get(i).obtenerEstado()) {
-                candidatos.add(ejemplares.get(i).obtenerIdEjemplar());
+            if (Objects.equals(ejemplares.get(i).getTitulo(), busqueda) && ejemplares.get(i).getEstado()){
+                candidatos.add(ejemplares.get(i).getIdEjemplar());
+            } else if (Objects.equals(ejemplares.get(i).getCategoria(), busqueda) && ejemplares.get(i).getEstado()) {
+                candidatos.add(ejemplares.get(i).getIdEjemplar());
+            } else if (Objects.equals(ejemplares.get(i).getAutor(), busqueda) && ejemplares.get(i).getEstado()) {
+                candidatos.add(ejemplares.get(i).getIdEjemplar());
             }
         }
         return candidatos;
@@ -55,8 +55,8 @@ public class EjemplarController {
 
     public ArrayList<Integer> buscarUbicacion(int idEjemplar) {
         for(int i = 0; i < ejemplares.size(); i++){
-            if (ejemplares.get(i).obtenerIdEjemplar() == idEjemplar){
-                return ejemplares.get(i).obtenerUbicacion();
+            if (ejemplares.get(i).getIdEjemplar() == idEjemplar){
+                return ejemplares.get(i).getUbicacion();
             }
         }
         return null;
@@ -64,7 +64,7 @@ public class EjemplarController {
 
     public void cambiarDiasPrestamo(int idEjemplar, int diasPrestamo){
         for(int i = 0; i < ejemplares.size(); i++){
-            if (ejemplares.get(i).obtenerIdEjemplar() == idEjemplar){
+            if (ejemplares.get(i).getIdEjemplar() == idEjemplar){
                 ejemplares.get(i).setDiasPrestamo(diasPrestamo);
             }
         }

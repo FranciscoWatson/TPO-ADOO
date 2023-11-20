@@ -1,12 +1,11 @@
 package main.Facade;
 
 
-import main.prestamo.Calendario;
-import main.socio.Suspendido;
+import main.prestamo.observer.Calendario;
+import main.socio.estadoSocio.Suspendido;
 import org.junit.Test;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
@@ -18,7 +17,7 @@ public class SistemaBibliotecaTest {
         Calendario calendario = new Calendario();
         SistemaBiblioteca sistemaBiblioteca = new SistemaBiblioteca(calendario);
         sistemaBiblioteca.nuevoSocio(1, "Juan", "Perez", 12354698, "juanperez@gmail.com", 13235686);
-        assertNotNull( sistemaBiblioteca.obtenerSocioController().obtenerSocio(12354698));
+        assertNotNull( sistemaBiblioteca.getSocioController().getSocio(12354698));
     }
     @Test
     public void testDosNuevosSocios() {
@@ -26,8 +25,8 @@ public class SistemaBibliotecaTest {
         SistemaBiblioteca sistemaBiblioteca = new SistemaBiblioteca(calendario);
         sistemaBiblioteca.nuevoSocio(1, "Juan", "Perez", 12354698, "juanperez@gmail.com", 13235686);
         sistemaBiblioteca.nuevoSocio(2, "MeVan", "ASuspender", 44517985, "elbaneado@gmail.com", 111522002,-10);
-        assertNotNull( sistemaBiblioteca.obtenerSocioController().obtenerSocio(12354698));
-        assertNotNull( sistemaBiblioteca.obtenerSocioController().obtenerSocio(44517985));
+        assertNotNull( sistemaBiblioteca.getSocioController().getSocio(12354698));
+        assertNotNull( sistemaBiblioteca.getSocioController().getSocio(44517985));
 
     }
 
@@ -37,7 +36,7 @@ public class SistemaBibliotecaTest {
         Calendario calendario = new Calendario();
         SistemaBiblioteca sistemaBiblioteca = new SistemaBiblioteca(calendario);
         sistemaBiblioteca.nuevoSocio(2, "MeVan", "ASuspender", 44517985, "elbaneado@gmail.com", 111522002,-10);
-        assertTrue( sistemaBiblioteca.obtenerSocioController().obtenerSocio(44517985).obtenerDiasHabiles() == -10 );
+        assertTrue( sistemaBiblioteca.getSocioController().getSocio(44517985).getDiasHabiles() == -10 );
     }
 
     @Test
@@ -45,7 +44,7 @@ public class SistemaBibliotecaTest {
         Calendario calendario = new Calendario();
         SistemaBiblioteca sistemaBiblioteca = new SistemaBiblioteca(calendario);
         sistemaBiblioteca.nuevoRevistaEspecializada("Harry Potter", "asd",2, LocalDate.of(2010,2,2), "accion", 1,1,1);
-        assertNotNull( sistemaBiblioteca.obtenerEjemplarControler().obtenerEjemplar(1) );
+        assertNotNull( sistemaBiblioteca.getEjemplarController().getEjemplar(1) );
     }
 
     @Test
@@ -53,7 +52,7 @@ public class SistemaBibliotecaTest {
         Calendario calendario = new Calendario();
         SistemaBiblioteca sistemaBiblioteca = new SistemaBiblioteca(calendario);
         sistemaBiblioteca.nuevoDiario("Harry Potter", "asd",2, LocalDate.of(2010,2,2), "accion", 1,1,1);
-        assertNotNull( sistemaBiblioteca.obtenerEjemplarControler().obtenerEjemplar(1) );
+        assertNotNull( sistemaBiblioteca.getEjemplarController().getEjemplar(1) );
 
     }
 
@@ -62,7 +61,7 @@ public class SistemaBibliotecaTest {
         Calendario calendario = new Calendario();
         SistemaBiblioteca sistemaBiblioteca = new SistemaBiblioteca(calendario);
         sistemaBiblioteca.nuevoLibro("Harry Potter", "asd",2, LocalDate.of(2010,2,2), "accion", 1,1,1);
-        assertNotNull( sistemaBiblioteca.obtenerEjemplarControler().obtenerEjemplar(1) );
+        assertNotNull( sistemaBiblioteca.getEjemplarController().getEjemplar(1) );
 
     }
 
@@ -71,7 +70,7 @@ public class SistemaBibliotecaTest {
         Calendario calendario = new Calendario();
         SistemaBiblioteca sistemaBiblioteca = new SistemaBiblioteca(calendario);
         sistemaBiblioteca.nuevoRevista("Harry Potter", "asd",2, LocalDate.of(2010,2,2), "accion", 1,1,1);
-        assertNotNull( sistemaBiblioteca.obtenerEjemplarControler().obtenerEjemplar(1) );
+        assertNotNull( sistemaBiblioteca.getEjemplarController().getEjemplar(1) );
     }
 
     @Test
@@ -81,7 +80,7 @@ public class SistemaBibliotecaTest {
         sistemaBiblioteca.nuevoSocio(1, "Juan", "Perez", 12354698, "juanperez@gmail.com", 13235686);
         sistemaBiblioteca.nuevoLibro("El señol de los anillos", "Jose", 3, LocalDate.of(2023, 11, 16), "accion", 1,2,2);
         sistemaBiblioteca.pedirPrestamo(1, 12354698, 1);
-        assertNotNull( sistemaBiblioteca.obtenerPrestamoController().obtenerPrestamo(1));
+        assertNotNull( sistemaBiblioteca.getPrestamoController().getPrestamo(1));
     }
 
     @Test
@@ -110,7 +109,7 @@ public class SistemaBibliotecaTest {
         calendario.cambioDia();
         calendario.cambioDia();
         sistemaBiblioteca.devolverPrestamo(1);
-        assertEquals(Suspendido.class, sistemaBiblioteca.obtenerSocioController().obtenerSocio(12354698).obtenerEstado().getClass());
+        assertEquals(Suspendido.class, sistemaBiblioteca.getSocioController().getSocio(12354698).getEstado().getClass());
     }
     @Test
     public void TestBuscarUbicacion(){

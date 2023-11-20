@@ -1,12 +1,14 @@
 package main.prestamo;
 
 import main.ejemplar.Ejemplar;
+import main.prestamo.observer.Calendario;
+import main.prestamo.observer.Observador;
 import main.socio.Socio;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class Prestamo implements Observador{
+public class Prestamo implements Observador {
     private int idPrestamo;
     private Socio socio;
     private Ejemplar ejemplar;
@@ -16,16 +18,16 @@ public class Prestamo implements Observador{
     	this.idPrestamo = idPrestamo;
         this.socio = socio;
         this.ejemplar = ejemplar;
-        int diasEjemplar = ejemplar.obtenerDiasPrestamo();
+        int diasEjemplar = ejemplar.getDiasPrestamo();
         LocalDate fechaActual = LocalDate.now();
         fechaActual = fechaActual.plusDays(diasEjemplar);
-        this.fechaVencimiento = fechaActual.plusDays(socio.obtenerDiasHabiles());
+        this.fechaVencimiento = fechaActual.plusDays(socio.getDiasHabiles());
      //   System.out.println("fechaVec:" + fechaVencimiento);
         ejemplar.solicitarEjemplar();
         socio.pedirPrestamo(this);
     }
 
-    public int obtenerIdPrestamo() {
+    public int getIdPrestamo() {
         return idPrestamo;
     }
     
@@ -40,7 +42,7 @@ public class Prestamo implements Observador{
 
     @Override
     public void actualizarFecha(Calendario calendario) {
-        long diferenciaEnDias = ChronoUnit.DAYS.between(calendario.obtenerFecha(), fechaVencimiento);
+        long diferenciaEnDias = ChronoUnit.DAYS.between(calendario.getFecha(), fechaVencimiento);
         if ( diferenciaEnDias <= 2 ){
             socio.notificarVencimiento(this);
         }
@@ -48,7 +50,7 @@ public class Prestamo implements Observador{
 
     }
 
-    public Ejemplar obtenerEjemplar() {
+    public Ejemplar getEjemplar() {
         return ejemplar;
     }
 

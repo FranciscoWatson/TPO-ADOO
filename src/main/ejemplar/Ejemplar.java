@@ -14,19 +14,19 @@ public abstract class Ejemplar {
     protected Ubicacion ubicacion;
     protected int diasPrestamo;
     protected LocalDate fechaPublicacion;
-    public int obtenerIdEjemplar() {
+    public int getIdEjemplar() {
         return idEjemplar;
     }
 
-    public String obtenerTitulo() {
+    public String getTitulo() {
         return titulo;
     }
 
-    public String obtenerCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public String obtenerAutor() {
+    public String getAutor() {
         return autor;
     }
 
@@ -34,11 +34,11 @@ public abstract class Ejemplar {
         estadoEjemplar = false;
     }
 
-    public boolean obtenerEstado() {
+    public boolean getEstado() {
         return estadoEjemplar;
     }
     
-    public int obtenerDiasPrestamo() {
+    public int getDiasPrestamo() {
         return diasPrestamo;
     }
 
@@ -46,8 +46,8 @@ public abstract class Ejemplar {
         estadoEjemplar = true;
     }
 
-    public ArrayList<Integer> obtenerUbicacion() {
-        return ubicacion.obtenerUbicacion();
+    public ArrayList<Integer> getUbicacion() {
+        return ubicacion.getUbicacion();
     }
     public void setDiasPrestamo(int diasPrestamo){
         this.diasPrestamo = diasPrestamo;

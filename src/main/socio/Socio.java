@@ -1,6 +1,13 @@
 package main.socio;
 
 import main.prestamo.Prestamo;
+import main.socio.estadoSocio.EstadoSocio;
+import main.socio.estadoSocio.Habilitado;
+import main.socio.estadoSocio.Suspendido;
+import main.socio.estrategiaNotificacion.EstrategiaNotificacion;
+import main.socio.estrategiaNotificacion.NotificacionWhatsApp;
+import main.socio.mensajes.Mensaje;
+import main.socio.mensajes.MensajeVencimiento;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -28,8 +35,10 @@ public class Socio {
         this.telefono = telefono;
         this.medioFav = medioFav;
         this.diasHabiles = 0;
+        this.dataLog = new DataLog();
         estado = new Habilitado(this);
         notificacion = new NotificacionWhatsApp();
+
     }
     
     //Agrego este para armar casos personalizados de socios con dias ya cargados
@@ -46,7 +55,7 @@ public class Socio {
         notificacion = new NotificacionWhatsApp();
     }
 
-    public int obtenerDni() {
+    public int getDni() {
         return dni;
     }
 
@@ -58,19 +67,19 @@ public class Socio {
         LocalDate currentDate = LocalDate.now();
         Mensaje mensaje = new MensajeVencimiento(currentDate, prestamo);
         mensajesEnviados.add(mensaje);
-        notificacion.enviarNotificacion(mensaje.obtenerMensaje(), this);
+        notificacion.enviarNotificacion(mensaje.getMensaje(), this);
         // CREAR MENSAJE + NOTIFICAR A LA ESTRATEGIA
     	//  factoryMensajeVencimiento.crearMensaje()
     }
     
-    public void setNombre(int idBibliotecario, String nombreNuevo, int dni) {
+    public void setNombre(int idBibliotecario, String nombreNuevo, double dni) {
     	String log = "BIBLIOTECARIO: "+ idBibliotecario + ", SOCIO: " + dni + " .Cambio de nombre '" + this.nombre + "' -------> '" + nombreNuevo + "'." ;
     	dataLog.registrarModificacion(log);
     	this.nombre = nombreNuevo;
     	
     }
     
-    public void setApellido(int idBibliotecario, String apellidoNuevo, int dni) {
+    public void setApellido(int idBibliotecario, String apellidoNuevo, double dni) {
     	String log = "BIBLIOTECARIO: "+ idBibliotecario + ", SOCIO: " + dni + " .Cambio de apellido '" + this.apellido + "' -------> '" + apellidoNuevo + "'." ;
     	dataLog.registrarModificacion(log);
     	this.apellido = apellidoNuevo;
@@ -105,15 +114,15 @@ public class Socio {
     	this.diasHabiles = nuevosDias;
     }
 
-    public String obtenerEmail() {
+    public String getEmail() {
         return mail;
     }
 
-    public int obtenerTelefono() {
+    public int getTelefono() {
         return telefono;
     }
     
-    public int obtenerDiasHabiles() {
+    public int getDiasHabiles() {
     	return diasHabiles;
     }
 
@@ -121,8 +130,12 @@ public class Socio {
         estado.devolverPrestamo(prestamo, this, fechaActual);
     }
 
-    public EstadoSocio obtenerEstado(){
+    public EstadoSocio getEstado(){
         return estado;
+    }
+
+    public ArrayList<String> getModificaciones(){
+        return dataLog.getModificaciones();
     }
     
 }

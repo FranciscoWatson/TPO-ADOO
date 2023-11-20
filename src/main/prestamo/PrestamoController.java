@@ -1,6 +1,7 @@
 package main.prestamo;
 
 import main.ejemplar.Ejemplar;
+import main.prestamo.observer.Calendario;
 import main.socio.Socio;
 
 import java.util.ArrayList;
@@ -17,12 +18,12 @@ public class PrestamoController {
 
 
     public void pedirPrestamo(int idBiblotecario, Socio socio, Ejemplar ejemplar) {
-    	if(socio.obtenerDiasHabiles() == -10) {
+    	if(socio.getDiasHabiles() == -10) {
     		System.out.println("Este usuario se encuentra suspendido.");
     	}
     	
     	else {
-    		if((ejemplar.obtenerDiasPrestamo() + socio.obtenerDiasHabiles()) <= 0) {
+    		if((ejemplar.getDiasPrestamo() + socio.getDiasHabiles()) <= 0) {
         		System.out.println("El usuario tiene demasiadas penalizaciones para este libro.");
         	}
     		else {
@@ -36,14 +37,14 @@ public class PrestamoController {
 
     public void devolverPrestamo(int idPrestamo) {
         for(int i = 0; i < prestamos.size(); i++){
-            if (prestamos.get(i).obtenerIdPrestamo() == idPrestamo){
-                 prestamos.get(i).devolverPrestamo(calendario.obtenerFecha());
+            if (prestamos.get(i).getIdPrestamo() == idPrestamo){
+                 prestamos.get(i).devolverPrestamo(calendario.getFecha());
             }
         }
     }
-    public Prestamo obtenerPrestamo(int idPrestamo){
+    public Prestamo getPrestamo(int idPrestamo){
             for(int i = 0; i < prestamos.size(); i++){
-                if (prestamos.get(i).obtenerIdPrestamo() == idPrestamo){
+                if (prestamos.get(i).getIdPrestamo() == idPrestamo){
                     return prestamos.get(i);
 
             }

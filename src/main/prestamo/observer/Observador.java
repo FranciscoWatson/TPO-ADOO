@@ -1,4 +1,4 @@
-package main.prestamo;
+package main.prestamo.observer;
 
 public interface Observador {
 

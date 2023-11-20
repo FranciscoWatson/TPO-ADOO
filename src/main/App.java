@@ -1,7 +1,7 @@
 package main;
 
 import main.Facade.SistemaBiblioteca;
-import main.prestamo.Calendario;
+import main.prestamo.observer.Calendario;
 
 import java.time.LocalDate;
 
@@ -26,10 +26,9 @@ public class App {
         calendario.cambioDia();
         calendario.cambioDia();
 
-
-
-
-
+        sistemaBiblioteca.cambiarNombreSocio(1,"Francisco", 12354698);
+        sistemaBiblioteca.cambiarApellidoSocio(2,"Watson", 12354698);
+        sistemaBiblioteca.getModificaciones(12354698);
         sistemaBiblioteca.devolverPrestamo(1);
         sistemaBiblioteca.pedirPrestamo(13, 44517985, 2);
         

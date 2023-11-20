@@ -1,4 +1,4 @@
-package main.prestamo;
+package main.prestamo.observer;
 
 import java.time.LocalDate;
 
@@ -20,7 +20,7 @@ public class Calendario extends Sujeto{
             observadores.get(i).actualizarFecha(this);
         }
     }
-    public LocalDate obtenerFecha(){
+    public LocalDate getFecha(){
         return fechaActual;
     }
 }

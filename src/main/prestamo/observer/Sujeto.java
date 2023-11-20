@@ -1,4 +1,4 @@
-package main.prestamo;
+package main.prestamo.observer;
 
 import java.util.ArrayList;
 
