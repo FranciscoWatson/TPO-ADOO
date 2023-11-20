@@ -92,7 +92,7 @@ public class SistemaBibliotecaTest {
     public void testDevolverPrestamo() {
         Calendario calendario = new Calendario();
         SistemaBiblioteca sistemaBiblioteca = new SistemaBiblioteca(calendario);
-        sistemaBiblioteca.nuevoSocio(1, "Juan", "Perez", 12354698, "juanperez@gmail.com", 13235686);
+        sistemaBiblioteca.nuevoSocio(1, "Juan", "Perez", 12354698, "juanperez@gmail.com", 13235686,-10);
         sistemaBiblioteca.nuevoLibro("El señol de los anillos", "Jose", 3, LocalDate.of(2023, 11, 16), "accion", 1,2,2);
         sistemaBiblioteca.pedirPrestamo(1, 12354698, 1);
         calendario.cambioDia();
