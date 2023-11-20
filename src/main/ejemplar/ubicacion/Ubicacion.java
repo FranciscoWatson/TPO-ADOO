@@ -21,4 +21,11 @@ public class Ubicacion {
 	public ArrayList<Integer> obtenerUbicacion2(){
 		return adapter.adaptarUbicacion(fila, columna);
 	}
+
+	public void setFila(int fila) {
+		this.fila = fila;
+	}
+	public void setColumna(int columna) {
+		this.columna = columna;
+	}
 }

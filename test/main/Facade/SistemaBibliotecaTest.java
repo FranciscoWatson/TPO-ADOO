@@ -2,13 +2,15 @@ package main.Facade;
 
 
 import main.prestamo.Calendario;
-import main.socio.EstadoSocio;
 import main.socio.Suspendido;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class SistemaBibliotecaTest {
     @Test
@@ -42,7 +44,7 @@ public class SistemaBibliotecaTest {
     public void testNuevoRevistaEspecializada() {
         Calendario calendario = new Calendario();
         SistemaBiblioteca sistemaBiblioteca = new SistemaBiblioteca(calendario);
-        sistemaBiblioteca.nuevoRevistaEspecializada("Harry Potter", "asd",2, LocalDate.of(2010,2,2), "accion", 1);
+        sistemaBiblioteca.nuevoRevistaEspecializada("Harry Potter", "asd",2, LocalDate.of(2010,2,2), "accion", 1,1,1);
         assertNotNull( sistemaBiblioteca.obtenerEjemplarControler().obtenerEjemplar(1) );
     }
 
@@ -50,7 +52,7 @@ public class SistemaBibliotecaTest {
     public void testNuevoDiario() {
         Calendario calendario = new Calendario();
         SistemaBiblioteca sistemaBiblioteca = new SistemaBiblioteca(calendario);
-        sistemaBiblioteca.nuevoDiario("Harry Potter", "asd",2, LocalDate.of(2010,2,2), "accion", 1);
+        sistemaBiblioteca.nuevoDiario("Harry Potter", "asd",2, LocalDate.of(2010,2,2), "accion", 1,1,1);
         assertNotNull( sistemaBiblioteca.obtenerEjemplarControler().obtenerEjemplar(1) );
 
     }
@@ -59,7 +61,7 @@ public class SistemaBibliotecaTest {
     public void testNuevoLibro() {
         Calendario calendario = new Calendario();
         SistemaBiblioteca sistemaBiblioteca = new SistemaBiblioteca(calendario);
-        sistemaBiblioteca.nuevoLibro("Harry Potter", "asd",2, LocalDate.of(2010,2,2), "accion", 1);
+        sistemaBiblioteca.nuevoLibro("Harry Potter", "asd",2, LocalDate.of(2010,2,2), "accion", 1,1,1);
         assertNotNull( sistemaBiblioteca.obtenerEjemplarControler().obtenerEjemplar(1) );
 
     }
@@ -68,7 +70,7 @@ public class SistemaBibliotecaTest {
     public void testNuevoRevista() {
         Calendario calendario = new Calendario();
         SistemaBiblioteca sistemaBiblioteca = new SistemaBiblioteca(calendario);
-        sistemaBiblioteca.nuevoRevista("Harry Potter", "asd",2, LocalDate.of(2010,2,2), "accion", 1);
+        sistemaBiblioteca.nuevoRevista("Harry Potter", "asd",2, LocalDate.of(2010,2,2), "accion", 1,1,1);
         assertNotNull( sistemaBiblioteca.obtenerEjemplarControler().obtenerEjemplar(1) );
     }
 
@@ -77,7 +79,7 @@ public class SistemaBibliotecaTest {
         Calendario calendario = new Calendario();
         SistemaBiblioteca sistemaBiblioteca = new SistemaBiblioteca(calendario);
         sistemaBiblioteca.nuevoSocio(1, "Juan", "Perez", 12354698, "juanperez@gmail.com", 13235686);
-        sistemaBiblioteca.nuevoLibro("El señol de los anillos", "Jose", 3, LocalDate.of(2023, 11, 16), "accion", 1);
+        sistemaBiblioteca.nuevoLibro("El señol de los anillos", "Jose", 3, LocalDate.of(2023, 11, 16), "accion", 1,2,2);
         sistemaBiblioteca.pedirPrestamo(1, 12354698, 1);
         assertNotNull( sistemaBiblioteca.obtenerPrestamoController().obtenerPrestamo(1));
     }
@@ -91,7 +93,7 @@ public class SistemaBibliotecaTest {
         Calendario calendario = new Calendario();
         SistemaBiblioteca sistemaBiblioteca = new SistemaBiblioteca(calendario);
         sistemaBiblioteca.nuevoSocio(1, "Juan", "Perez", 12354698, "juanperez@gmail.com", 13235686);
-        sistemaBiblioteca.nuevoLibro("El señol de los anillos", "Jose", 3, LocalDate.of(2023, 11, 16), "accion", 1);
+        sistemaBiblioteca.nuevoLibro("El señol de los anillos", "Jose", 3, LocalDate.of(2023, 11, 16), "accion", 1,2,2);
         sistemaBiblioteca.pedirPrestamo(1, 12354698, 1);
         calendario.cambioDia();
         calendario.cambioDia();
@@ -142,6 +144,12 @@ public class SistemaBibliotecaTest {
         calendario.cambioDia();
         sistemaBiblioteca.devolverPrestamo(4);
         assertEquals(Suspendido.class, sistemaBiblioteca.obtenerSocioController().obtenerSocio(12354698).obtenerEstado().getClass());
-
+    }
+    @Test
+    public void TestBuscarUbicacion(){
+        Calendario calendario = new Calendario();
+        SistemaBiblioteca sistemaBiblioteca = new SistemaBiblioteca(calendario);
+        sistemaBiblioteca.nuevoLibro("El señol de los anillos", "Jose", 3, LocalDate.of(2023, 11, 16), "accion", 1,2,2);
+        assertEquals(Arrays.asList(2, 2), sistemaBiblioteca.buscarUbicacion(1));
     }
 }
