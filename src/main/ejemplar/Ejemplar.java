@@ -49,4 +49,7 @@ public abstract class Ejemplar {
     public ArrayList<Integer> obtenerUbicacion() {
         return ubicacion.obtenerUbicacion();
     }
+    public void setDiasPrestamo(int diasPrestamo){
+        this.diasPrestamo = diasPrestamo;
+    }
 }

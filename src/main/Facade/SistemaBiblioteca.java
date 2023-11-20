@@ -84,4 +84,7 @@ public class SistemaBiblioteca {
     public ArrayList<Integer> buscarUbicacion(int idEjemplar){
         return ejemplarController.buscarUbicacion(idEjemplar);
     }
+    public void cambiarDiasPrestamo(int idEjemplar, int diasPrestamo){
+        ejemplarController.cambiarDiasPrestamo(idEjemplar, diasPrestamo);
+    }
 }

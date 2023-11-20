@@ -61,4 +61,12 @@ public class EjemplarController {
         }
         return null;
     }
+
+    public void cambiarDiasPrestamo(int idEjemplar, int diasPrestamo){
+        for(int i = 0; i < ejemplares.size(); i++){
+            if (ejemplares.get(i).obtenerIdEjemplar() == idEjemplar){
+                ejemplares.get(i).setDiasPrestamo(diasPrestamo);
+            }
+        }
+    }
 }
