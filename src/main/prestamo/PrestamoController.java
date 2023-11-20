@@ -41,4 +41,13 @@ public class PrestamoController {
             }
         }
     }
+    public Prestamo obtenerPrestamo(int idPrestamo){
+            for(int i = 0; i < prestamos.size(); i++){
+                if (prestamos.get(i).obtenerIdPrestamo() == idPrestamo){
+                    return prestamos.get(i);
+
+            }
+        }
+        return null;
+    }
 }

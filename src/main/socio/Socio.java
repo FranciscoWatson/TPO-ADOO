@@ -120,5 +120,9 @@ public class Socio {
     public void devolverPrestamo(Prestamo prestamo) {
         estado.devolverPrestamo(prestamo, this);
     }
+
+    public EstadoSocio obtenerEstado(){
+        return estado;
+    }
     
 }

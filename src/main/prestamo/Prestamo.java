@@ -20,7 +20,7 @@ public class Prestamo implements Observador{
         LocalDate fechaActual = LocalDate.now();
         fechaActual = fechaActual.plusDays(diasEjemplar);
         this.fechaVencimiento = fechaActual.plusDays(socio.obtenerDiasHabiles());
-        System.out.println("fechaVec:" + fechaVencimiento);
+     //   System.out.println("fechaVec:" + fechaVencimiento);
         ejemplar.solicitarEjemplar();
         socio.pedirPrestamo(this);
     }
@@ -51,4 +51,6 @@ public class Prestamo implements Observador{
     public Ejemplar obtenerEjemplar() {
         return ejemplar;
     }
+
+
 }
