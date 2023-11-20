@@ -14,11 +14,8 @@ public class Ubicacion {
 		this.adapter = new SistemaUbicacionFisica();
 	}
 
-	public ArrayList<Integer> obtenerUbicacion(int idEjemplar) {
-		ArrayList<Integer> filaColumna = adapter.obtenerUbicacion(idEjemplar);
-		return filaColumna;
-	}
-	public ArrayList<Integer> obtenerUbicacion2(){
+
+	public ArrayList<Integer> obtenerUbicacion(){
 		return adapter.adaptarUbicacion(fila, columna);
 	}
 

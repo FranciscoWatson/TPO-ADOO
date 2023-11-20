@@ -12,7 +12,7 @@ public class Calendario extends Sujeto{
         fechaActual = LocalDate.now();
     }
     public void cambioDia(){
-        fechaActual.plusDays(1);
+        fechaActual = fechaActual.plusDays(1);
         notificar();
     }
     public void notificar(){

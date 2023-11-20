@@ -52,15 +52,11 @@ public class EjemplarController {
         return candidatos;
     }
     
+
     public ArrayList<Integer> buscarUbicacion(int idEjemplar) {
-    	Ejemplar ejemplar = obtenerEjemplar(idEjemplar);
-    	ArrayList<Integer> filaColumna = ejemplar.obtenerUbicacion();
-    	return filaColumna;
-    }
-    public ArrayList<Integer> buscarUbicacion2(int idEjemplar) {
         for(int i = 0; i < ejemplares.size(); i++){
             if (ejemplares.get(i).obtenerIdEjemplar() == idEjemplar){
-                return ejemplares.get(i).obtenerUbicacion2();
+                return ejemplares.get(i).obtenerUbicacion();
             }
         }
         return null;

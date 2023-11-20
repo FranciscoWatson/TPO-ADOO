@@ -117,8 +117,8 @@ public class Socio {
     	return diasHabiles;
     }
 
-    public void devolverPrestamo(Prestamo prestamo) {
-        estado.devolverPrestamo(prestamo, this);
+    public void devolverPrestamo(Prestamo prestamo, LocalDate fechaActual) {
+        estado.devolverPrestamo(prestamo, this, fechaActual);
     }
 
     public EstadoSocio obtenerEstado(){

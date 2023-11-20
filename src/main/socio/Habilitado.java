@@ -13,8 +13,7 @@ public class Habilitado extends EstadoSocio {
     }
 
     @Override
-    public void devolverPrestamo(Prestamo prestamo, Socio socio) {
-    	LocalDate fechaActual = LocalDate.now();
+    public void devolverPrestamo(Prestamo prestamo, Socio socio, LocalDate fechaActual) {
     	//Chequeo si se entrego en tiempo y forma y si es asi sumo 1 al contadorBonificacion :D
     	if(fechaActual.isBefore(prestamo.obtenerFechaVencimiento()) || fechaActual.isEqual(prestamo.obtenerFechaVencimiento())){
     		contadorBonificacion += 1;

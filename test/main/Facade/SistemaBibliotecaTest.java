@@ -90,9 +90,10 @@ public class SistemaBibliotecaTest {
 
     @Test
     public void testDevolverPrestamo() {
+        // Devolver prestamo pasado los 10 dias de vencimiento
         Calendario calendario = new Calendario();
         SistemaBiblioteca sistemaBiblioteca = new SistemaBiblioteca(calendario);
-        sistemaBiblioteca.nuevoSocio(1, "Juan", "Perez", 12354698, "juanperez@gmail.com", 13235686,-10);
+        sistemaBiblioteca.nuevoSocio(1, "Juan", "Perez", 12354698, "juanperez@gmail.com", 13235686);
         sistemaBiblioteca.nuevoLibro("El señol de los anillos", "Jose", 3, LocalDate.of(2023, 11, 16), "accion", 1,2,2);
         sistemaBiblioteca.pedirPrestamo(1, 12354698, 1);
         calendario.cambioDia();
@@ -105,44 +106,10 @@ public class SistemaBibliotecaTest {
         calendario.cambioDia();
         calendario.cambioDia();
         calendario.cambioDia();
-
+        calendario.cambioDia();
+        calendario.cambioDia();
+        calendario.cambioDia();
         sistemaBiblioteca.devolverPrestamo(1);
-        sistemaBiblioteca.pedirPrestamo(1, 12354698, 1);
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        sistemaBiblioteca.devolverPrestamo(2);
-        sistemaBiblioteca.pedirPrestamo(1, 12354698, 1);
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        sistemaBiblioteca.devolverPrestamo(3);
-        sistemaBiblioteca.pedirPrestamo(1, 12354698, 1);
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        calendario.cambioDia();
-        sistemaBiblioteca.devolverPrestamo(4);
         assertEquals(Suspendido.class, sistemaBiblioteca.obtenerSocioController().obtenerSocio(12354698).obtenerEstado().getClass());
     }
     @Test

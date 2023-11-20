@@ -33,9 +33,9 @@ public class Prestamo implements Observador{
     	return fechaVencimiento;
     }
 
-    public void devolverPrestamo() {
+    public void devolverPrestamo(LocalDate fechaActual) {
         ejemplar.devolverEjemplar();
-        socio.devolverPrestamo(this);
+        socio.devolverPrestamo(this, fechaActual);
     }
 
     @Override

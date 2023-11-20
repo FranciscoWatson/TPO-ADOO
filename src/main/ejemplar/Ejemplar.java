@@ -46,11 +46,7 @@ public abstract class Ejemplar {
         estadoEjemplar = true;
     }
 
-	public ArrayList<Integer> obtenerUbicacion(Ejemplar this) {
-		ArrayList<Integer> filaColumna = ubicacion.obtenerUbicacion(this.idEjemplar);
-		return filaColumna;
-	}
-    public ArrayList<Integer> obtenerUbicacion2() {
-        return ubicacion.obtenerUbicacion2();
+    public ArrayList<Integer> obtenerUbicacion() {
+        return ubicacion.obtenerUbicacion();
     }
 }

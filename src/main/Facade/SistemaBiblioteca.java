@@ -82,6 +82,6 @@ public class SistemaBiblioteca {
     }
 
     public ArrayList<Integer> buscarUbicacion(int idEjemplar){
-        return ejemplarController.buscarUbicacion2(idEjemplar);
+        return ejemplarController.buscarUbicacion(idEjemplar);
     }
 }

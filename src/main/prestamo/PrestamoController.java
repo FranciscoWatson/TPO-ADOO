@@ -37,7 +37,7 @@ public class PrestamoController {
     public void devolverPrestamo(int idPrestamo) {
         for(int i = 0; i < prestamos.size(); i++){
             if (prestamos.get(i).obtenerIdPrestamo() == idPrestamo){
-                 prestamos.get(i).devolverPrestamo();
+                 prestamos.get(i).devolverPrestamo(calendario.obtenerFecha());
             }
         }
     }
