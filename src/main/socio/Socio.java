@@ -5,9 +5,11 @@ import main.socio.estadoSocio.EstadoSocio;
 import main.socio.estadoSocio.Habilitado;
 import main.socio.estadoSocio.Suspendido;
 import main.socio.estrategiaNotificacion.EstrategiaNotificacion;
+import main.socio.estrategiaNotificacion.NotificacionEmail;
+import main.socio.estrategiaNotificacion.NotificacionSMS;
 import main.socio.estrategiaNotificacion.NotificacionWhatsApp;
-import main.socio.mensajes.Mensaje;
-import main.socio.mensajes.MensajeVencimiento;
+import main.socio.mensajes.*;
+
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -71,6 +73,22 @@ public class Socio {
         // CREAR MENSAJE + NOTIFICAR A LA ESTRATEGIA
     	//  factoryMensajeVencimiento.crearMensaje()
     }
+    public void notificarBonificacion(Prestamo prestamo) {
+        LocalDate currentDate = LocalDate.now();
+        Mensaje mensaje = new MensajeRecompenza(currentDate, prestamo);
+        mensajesEnviados.add(mensaje);
+        notificacion.enviarNotificacion(mensaje.getMensaje(), this);
+        // CREAR MENSAJE + NOTIFICAR A LA ESTRATEGIA
+        //  factoryMensajeVencimiento.crearMensaje()
+    }
+    public void notificarPenalizacion(Prestamo prestamo) {
+        LocalDate currentDate = LocalDate.now();
+        Mensaje mensaje = new MensajePenalizacion(currentDate, prestamo);
+        mensajesEnviados.add(mensaje);
+        notificacion.enviarNotificacion(mensaje.getMensaje(), this);
+        // CREAR MENSAJE + NOTIFICAR A LA ESTRATEGIA
+        //  factoryMensajeVencimiento.crearMensaje()
+    }
     
     public void setNombre(int idBibliotecario, String nombreNuevo, double dni) {
     	String log = "BIBLIOTECARIO: "+ idBibliotecario + ", SOCIO: " + dni + " .Cambio de nombre '" + this.nombre + "' -------> '" + nombreNuevo + "'." ;
@@ -86,25 +104,31 @@ public class Socio {
     	
     }
     
-    public void setMail(int idBibliotecario, String mailNuevo, int dni) {
+    public void setMail(int idBibliotecario, String mailNuevo, double dni) {
     	String log = "BIBLIOTECARIO: "+ idBibliotecario + ", SOCIO: " + dni + " .Cambio de mail '" + this.mail + "' -------> '" + mailNuevo + "'." ;
     	dataLog.registrarModificacion(log);
     	this.mail = mailNuevo;
     	
     }
     
-    public void setTelefono(int idBibliotecario, int telefonoNuevo, int dni) {
+    public void setTelefono(int idBibliotecario, int telefonoNuevo, double dni) {
     	String log = "BIBLIOTECARIO: "+ idBibliotecario + ", SOCIO: " + dni + " .Cambio de telefono '" + this.telefono + "' -------> '" + telefonoNuevo + "'." ;
     	dataLog.registrarModificacion(log);
     	this.telefono = telefonoNuevo;
     	
     }
     
-    public void setMedioFav(int idBibliotecario, MedioFavorito medioFavNuevo, int dni) {
+    public void setMedioFav(int idBibliotecario, String medioFavNuevo, double dni) {
     	String log = "BIBLIOTECARIO: "+ idBibliotecario + ", SOCIO: " + dni + " .Cambio de telefono '" + this.medioFav + "' -------> '" + medioFavNuevo + "'." ;
     	dataLog.registrarModificacion(log);
-    	this.medioFav = medioFavNuevo;
-    	
+        if (medioFavNuevo == "sms"){
+            notificacion = new NotificacionSMS();
+        } else if (medioFavNuevo == "whatsapp") {
+            notificacion = new NotificacionWhatsApp();
+        } else if (medioFavNuevo == "email") {
+            notificacion = new NotificacionEmail();
+        }
+
     }
     public void setEstadoSocio(EstadoSocio nuevoEstado) {
     	this.estado = nuevoEstado;
@@ -137,5 +161,9 @@ public class Socio {
     public ArrayList<String> getModificaciones(){
         return dataLog.getModificaciones();
     }
-    
+
+
+    public EstrategiaNotificacion getNotificacion() {
+        return notificacion;
+    }
 }

@@ -101,4 +101,8 @@ public class SistemaBiblioteca {
     public void cambiarApellidoSocio(int idBiblotecario, String nuevoApellido, double dni){
         socioController.setApellido(idBiblotecario, nuevoApellido, dni);
     }
+
+    public void cambiarEstrategiaNotificacion(int idBiblotecario, double dni, String medioFavNuevo) {
+        socioController.setMedioFav(1, medioFavNuevo, dni);
+    }
 }

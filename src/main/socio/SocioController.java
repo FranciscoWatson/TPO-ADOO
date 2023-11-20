@@ -47,9 +47,10 @@ public class SocioController {
     	socio.setTelefono(idBibliotecario, telefonoNuevo, dni);
     }
     
-    public void setMedioFav(int idBibliotecario, MedioFavorito medioFavNuevo, int dni) {
+    public void setMedioFav(int idBibliotecario, String medioFavNuevo, double dni) {
     	Socio socio = getSocio(dni);
     	socio.setTelefono(idBibliotecario, idBibliotecario, dni);
+        socio.setMedioFav(1,medioFavNuevo,dni);
     }
     public ArrayList<Socio> getSocios(){
         return socios;

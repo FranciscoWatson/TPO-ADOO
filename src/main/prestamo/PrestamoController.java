@@ -28,7 +28,7 @@ public class PrestamoController {
         	}
     		else {
     			int idPrestamo = prestamos.size() + 1;
-		        Prestamo nuevoPrestamo = new Prestamo(idBiblotecario, socio, ejemplar, idPrestamo);
+		        Prestamo nuevoPrestamo = new Prestamo(idBiblotecario, socio, ejemplar, idPrestamo, calendario.getFecha());
 		        prestamos.add(nuevoPrestamo);
 		        calendario.agregarObservador(nuevoPrestamo);
     		}

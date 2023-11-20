@@ -11,6 +11,6 @@ public class MensajePenalizacion extends Mensaje{
         this.fecha = fecha;
     }
     public String getMensaje(){
-        return "Estimado socio, se le informa ha recibido una penalizacion por el prestamo del libro: " + prestamo.getEjemplar().getTitulo();
+        return "Estimado socio, se le informa ha recibido una penalizacion por el prestamo del libro: " + prestamo.getEjemplar().getTitulo() ;
     }
 }

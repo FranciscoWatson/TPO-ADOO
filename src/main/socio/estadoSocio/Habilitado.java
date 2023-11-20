@@ -18,10 +18,12 @@ public class Habilitado extends EstadoSocio {
     	//Chequeo si se entrego en tiempo y forma y si es asi sumo 1 al contadorBonificacion :D
     	if(fechaActual.isBefore(prestamo.obtenerFechaVencimiento()) || fechaActual.isEqual(prestamo.obtenerFechaVencimiento())){
     		contadorBonificacion += 1;
+
     		//Si llego a 5, le sumamos un dia a los dias del socio
     		if (this.contadorBonificacion == 5){
     			this.contadorBonificacion = 0;
     			socio.setDiasHabiles(socio.getDiasHabiles() +1);
+				socio.notificarBonificacion(prestamo);
     		}
     	}
     	//Si no entrego en tiempo y forma se pudre >:(
@@ -34,11 +36,13 @@ public class Habilitado extends EstadoSocio {
     			Suspendido suspendido = new Suspendido(socio);
     			socio.setEstadoSocio(suspendido);
     			socio.setDiasHabiles(-10);
+				socio.notificarPenalizacion(prestamo);
     			System.out.println("El socio con DNI: " + socio.getDni() + " fue suspendido. Contactarse con administracion");
     		}
     		//Sino simplemente le restamos los dias
     		else {
     			socio.setDiasHabiles(socio.getDiasHabiles() + diferenciaDias);
+				socio.notificarPenalizacion(prestamo);
     		}
     		
     	}
