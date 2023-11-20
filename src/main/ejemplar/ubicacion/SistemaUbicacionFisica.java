@@ -11,4 +11,11 @@ public class SistemaUbicacionFisica implements AdapterUbicacion {
 		filaColumna.add(6);
 		return filaColumna;
 	}
+	@Override
+	public ArrayList<Integer> adaptarUbicacion(int fila, int columna){
+		ArrayList<Integer> filaColumna = new ArrayList<>();
+		filaColumna.add(fila);
+		filaColumna.add(columna);
+		return filaColumna;
+	}
 }

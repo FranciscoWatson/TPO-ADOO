@@ -56,6 +56,13 @@ public class EjemplarController {
     	Ejemplar ejemplar = obtenerEjemplar(idEjemplar);
     	ArrayList<Integer> filaColumna = ejemplar.obtenerUbicacion();
     	return filaColumna;
-    	
+    }
+    public ArrayList<Integer> buscarUbicacion2(int idEjemplar) {
+        for(int i = 0; i < ejemplares.size(); i++){
+            if (ejemplares.get(i).obtenerIdEjemplar() == idEjemplar){
+                return ejemplares.get(i).obtenerUbicacion2();
+            }
+        }
+        return null;
     }
 }

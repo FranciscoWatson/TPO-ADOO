@@ -50,4 +50,7 @@ public abstract class Ejemplar {
 		ArrayList<Integer> filaColumna = ubicacion.obtenerUbicacion(this.idEjemplar);
 		return filaColumna;
 	}
+    public ArrayList<Integer> obtenerUbicacion2() {
+        return ubicacion.obtenerUbicacion2();
+    }
 }

@@ -3,7 +3,6 @@ package main.Facade;
 import main.ejemplar.Ejemplar;
 import main.ejemplar.EjemplarController;
 import main.prestamo.Calendario;
-import main.prestamo.Prestamo;
 import main.prestamo.PrestamoController;
 import main.socio.Socio;
 import main.socio.SocioController;
@@ -75,5 +74,14 @@ public class SistemaBiblioteca {
 
     public PrestamoController obtenerPrestamoController() {
         return prestamoController;
+    }
+
+    public String verHistorialPrestamo(){
+
+        return null;
+    }
+
+    public ArrayList<Integer> buscarUbicacion(int idEjemplar){
+        return ejemplarController.buscarUbicacion2(idEjemplar);
     }
 }
