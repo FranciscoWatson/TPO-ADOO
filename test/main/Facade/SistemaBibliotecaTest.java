@@ -79,6 +79,14 @@ public class SistemaBibliotecaTest {
         sistemaBiblioteca.nuevoRevista("Harry Potter", "asd",2, LocalDate.of(2010,2,2), "accion", 1,1,1);
         assertNotNull( sistemaBiblioteca.getEjemplarController().getEjemplar(1) );
     }
+    
+    @Test
+    public void testBuscarEjemplar() {
+    	sistemaBiblioteca.nuevoLibro("El señol de los anillos", "Jose", 3, LocalDate.of(2023, 11, 16), "Fantasia", 1,2,2);
+    	sistemaBiblioteca.nuevoLibro("Luna de Pluton", "Chiqui tapia", 3, LocalDate.of(2023, 11, 16), "Ciencia Ficcion", 2,2,2);
+    	sistemaBiblioteca.nuevoLibro("El hobbit", "Jose", 3, LocalDate.of(2023, 11, 16), "Fantasia",3,3,2);
+    	sistemaBiblioteca.buscarEjemplar("Fantasia");
+    }
 
     @Test
     public void testPedirPrestamo() {
@@ -113,13 +121,7 @@ public class SistemaBibliotecaTest {
         assertEquals(fechaActual, sistemaBiblioteca.getPrestamoController().getFechaVec(1));
     }
 
-    @Test
-    public void testBuscarEjemplar() {
-    	sistemaBiblioteca.nuevoLibro("El señol de los anillos", "Jose", 3, LocalDate.of(2023, 11, 16), "Fantasia", 1,2,2);
-    	sistemaBiblioteca.nuevoLibro("Luna de Pluton", "Chiqui tapia", 3, LocalDate.of(2023, 11, 16), "Ciencia Ficcion", 2,2,2);
-    	sistemaBiblioteca.nuevoLibro("El hobbit", "Jose", 3, LocalDate.of(2023, 11, 16), "Fantasia",3,2,2);
-    	sistemaBiblioteca.buscarEjemplar("Fantasia");
-    }
+   
 
     @Test
     public void testDevolverPrestamoFueraDeTermino() {

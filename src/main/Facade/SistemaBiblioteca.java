@@ -57,10 +57,10 @@ public class SistemaBiblioteca {
         prestamoController.pedirPrestamo(idBiblotecario, socio, ejemplar);
 
     }
-    public ArrayList<Integer> buscarEjemplar(String busqueda){
-    	ArrayList<Integer> resultado = ejemplarController.buscarEjemplar(busqueda);
+    public ArrayList<String> buscarEjemplar(String busqueda){
+    	ArrayList<String> resultado = ejemplarController.buscarEjemplar(busqueda);
     	for (int i = 0; i < resultado.size(); i++){
-            System.out.println("Id del libro obtenido: " + resultado.get(i));
+            System.out.println(resultado.get(i));
     	}
         return resultado;
     }

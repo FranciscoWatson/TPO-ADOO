@@ -38,15 +38,16 @@ public class EjemplarController {
     }
 
     @SuppressWarnings("null")
-	public ArrayList<Integer> buscarEjemplar(String busqueda) {
-        ArrayList<Integer> candidatos = new ArrayList<>();
+	public ArrayList<String> buscarEjemplar(String busqueda) {
+        ArrayList<String> candidatos = new ArrayList<>();
+        candidatos.add("Resultados:");
         for(int i = 0; i < ejemplares.size(); i++){
             if (Objects.equals(ejemplares.get(i).getTitulo(), busqueda) && !(ejemplares.get(i).getEstado())){
-                candidatos.add(ejemplares.get(i).getIdEjemplar());
+                candidatos.add("ID: "+ejemplares.get(i).getIdEjemplar()+", TITULO: "+ejemplares.get(i).getTitulo()+", AUTOR: "+ejemplares.get(i).getAutor() +", CATEGORIA: "+ejemplares.get(i).getCategoria() +", DIAS DE PRESTAMO: "+ejemplares.get(i).getDiasPrestamo()+ ", FILA/COLUMNA: " +ejemplares.get(i).getUbicacion().get(0)+ "/" +ejemplares.get(i).getUbicacion().get(1));
             } else if (Objects.equals(ejemplares.get(i).getCategoria(), busqueda) && !(ejemplares.get(i).getEstado())) {
-                candidatos.add(ejemplares.get(i).getIdEjemplar());
+            	candidatos.add("ID: "+ejemplares.get(i).getIdEjemplar()+", TITULO: "+ejemplares.get(i).getTitulo()+", AUTOR: "+ejemplares.get(i).getAutor() +", CATEGORIA: "+ejemplares.get(i).getCategoria() +", DIAS DE PRESTAMO: "+ejemplares.get(i).getDiasPrestamo()+ ", FILA/COLUMNA: " +ejemplares.get(i).getUbicacion().get(0)+ "/" +ejemplares.get(i).getUbicacion().get(1));
             } else if (Objects.equals(ejemplares.get(i).getAutor(), busqueda) && !(ejemplares.get(i).getEstado())) {
-                candidatos.add(ejemplares.get(i).getIdEjemplar());
+            	candidatos.add("ID: "+ejemplares.get(i).getIdEjemplar()+", TITULO: "+ejemplares.get(i).getTitulo()+", AUTOR: "+ejemplares.get(i).getAutor() +", CATEGORIA: "+ejemplares.get(i).getCategoria() +", DIAS DE PRESTAMO: "+ejemplares.get(i).getDiasPrestamo()+ ", FILA/COLUMNA: " +ejemplares.get(i).getUbicacion().get(0)+ "/" +ejemplares.get(i).getUbicacion().get(1));
             }
         }
         return candidatos;
