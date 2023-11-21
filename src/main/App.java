@@ -10,6 +10,7 @@ import java.time.LocalDate;
 public class App {
     private static SistemaBiblioteca sistemaBiblioteca;
     public static void main(String[] args) {
+        /*
         Calendario calendario = new Calendario();
         sistemaBiblioteca = new SistemaBiblioteca(calendario);
         sistemaBiblioteca.nuevoSocio(1, "Juan", "Perez", 12354698, "juanperez@gmail.com", 13235686);
@@ -31,7 +32,7 @@ public class App {
         sistemaBiblioteca.getModificaciones(12354698);
         sistemaBiblioteca.devolverPrestamo(1);
         sistemaBiblioteca.pedirPrestamo(13, 44517985, 2);
-        
+        */
         
 
     }
