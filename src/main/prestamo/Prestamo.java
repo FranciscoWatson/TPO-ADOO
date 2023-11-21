@@ -48,13 +48,19 @@ public class Prestamo implements Observador {
         if ( diferenciaEnDias <= 2 && devuelto == false){
             socio.notificarVencimiento(this);
         }
-
-
+    }
+    
+    public void agregarDias(int dias) {
+    	this.fechaVencimiento = this.fechaVencimiento.plusDays(dias);
     }
 
     public Ejemplar getEjemplar() {
         return ejemplar;
     }
+    
+    public LocalDate getFechaVec() {
+		return this.fechaVencimiento;
+	}
 
 
 }

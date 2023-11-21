@@ -31,6 +31,16 @@ public class SistemaBibliotecaTest {
         assertNotNull( sistemaBiblioteca.getSocioController().getSocio(44517985));
 
     }
+    
+    @Test
+    public void testModificarSocioYverDatalog() {
+        sistemaBiblioteca.nuevoSocio(1, "Juan", "Perez", 12354698, "juanperez@gmail.com", 13235686);
+        sistemaBiblioteca.cambiarApellidoSocio(1, "Jackson", 12354698);
+        sistemaBiblioteca.cambiarNombreSocio(1, "Jorgue", 12354698);
+        sistemaBiblioteca.cambiarMail(2, "jjackson@gmail.com", 12354698);
+        sistemaBiblioteca.getModificaciones(12354698);
+
+    }
 
 
     @Test
@@ -78,9 +88,37 @@ public class SistemaBibliotecaTest {
         sistemaBiblioteca.pedirPrestamo(1, 12354698, 1);
         assertNotNull( sistemaBiblioteca.getPrestamoController().getPrestamo(1));
     }
+    
+    @Test
+    public void testVerHistorial() {
+
+        sistemaBiblioteca.nuevoSocio(1, "Juan", "Perez", 12354698, "juanperez@gmail.com", 13235686);
+        sistemaBiblioteca.nuevoLibro("El señol de los anillos", "Jose", 3, LocalDate.of(2023, 11, 16), "accion", 1,2,2);
+        sistemaBiblioteca.nuevoRevista("Harry Potter", "asd",2, LocalDate.of(2010,2,2), "accion", 2,1,1);
+        sistemaBiblioteca.pedirPrestamo(1, 12354698, 1);
+        sistemaBiblioteca.pedirPrestamo(1, 12354698, 2);
+        sistemaBiblioteca.verHistorialPrestamo(12354698);
+    }
+    
+    @Test
+    public void testAgregarDiasPrestamo() {
+        sistemaBiblioteca.nuevoSocio(1, "Juan", "Perez", 12354698, "juanperez@gmail.com", 13235686);
+        sistemaBiblioteca.nuevoLibro("El señol de los anillos", "Jose", 3, LocalDate.of(2023, 11, 16), "accion", 1,2,2);
+        sistemaBiblioteca.pedirPrestamo(1, 12354698, 1);
+        LocalDate fechaActual = LocalDate.now();
+        fechaActual = fechaActual.plusDays(3);
+        assertEquals(fechaActual, sistemaBiblioteca.getPrestamoController().getFechaVec(1));
+        sistemaBiblioteca.agregarDiasPrestamo(10, 1);
+        fechaActual = fechaActual.plusDays(10);
+        assertEquals(fechaActual, sistemaBiblioteca.getPrestamoController().getFechaVec(1));
+    }
 
     @Test
     public void testBuscarEjemplar() {
+    	sistemaBiblioteca.nuevoLibro("El señol de los anillos", "Jose", 3, LocalDate.of(2023, 11, 16), "Fantasia", 1,2,2);
+    	sistemaBiblioteca.nuevoLibro("Luna de Pluton", "Chiqui tapia", 3, LocalDate.of(2023, 11, 16), "Ciencia Ficcion", 2,2,2);
+    	sistemaBiblioteca.nuevoLibro("El hobbit", "Jose", 3, LocalDate.of(2023, 11, 16), "Fantasia",3,2,2);
+    	sistemaBiblioteca.buscarEjemplar("Fantasia");
     }
 
     @Test

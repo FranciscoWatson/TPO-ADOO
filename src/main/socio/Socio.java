@@ -166,4 +166,12 @@ public class Socio {
     public EstrategiaNotificacion getNotificacion() {
         return notificacion;
     }
+    
+    public ArrayList<String> verHistorial() {
+		ArrayList<String> historial = new ArrayList<>();
+		for(int i = 0; i < prestamos.size(); i++){
+                historial.add("idPrestamo: " + prestamos.get(i).getIdPrestamo() + " Ejemplar otorgado: " + prestamos.get(i).getEjemplar().getTitulo() + " FechaVec: " + prestamos.get(i).getFechaVec());
+            }
+		return historial;
+	}
 }

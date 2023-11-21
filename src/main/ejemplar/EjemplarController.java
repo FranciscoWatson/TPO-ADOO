@@ -39,13 +39,13 @@ public class EjemplarController {
 
     @SuppressWarnings("null")
 	public ArrayList<Integer> buscarEjemplar(String busqueda) {
-        ArrayList<Integer> candidatos = null;
+        ArrayList<Integer> candidatos = new ArrayList<>();
         for(int i = 0; i < ejemplares.size(); i++){
-            if (Objects.equals(ejemplares.get(i).getTitulo(), busqueda) && ejemplares.get(i).getEstado()){
+            if (Objects.equals(ejemplares.get(i).getTitulo(), busqueda) && !(ejemplares.get(i).getEstado())){
                 candidatos.add(ejemplares.get(i).getIdEjemplar());
-            } else if (Objects.equals(ejemplares.get(i).getCategoria(), busqueda) && ejemplares.get(i).getEstado()) {
+            } else if (Objects.equals(ejemplares.get(i).getCategoria(), busqueda) && !(ejemplares.get(i).getEstado())) {
                 candidatos.add(ejemplares.get(i).getIdEjemplar());
-            } else if (Objects.equals(ejemplares.get(i).getAutor(), busqueda) && ejemplares.get(i).getEstado()) {
+            } else if (Objects.equals(ejemplares.get(i).getAutor(), busqueda) && !(ejemplares.get(i).getEstado())) {
                 candidatos.add(ejemplares.get(i).getIdEjemplar());
             }
         }

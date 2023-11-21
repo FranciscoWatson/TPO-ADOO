@@ -4,6 +4,7 @@ import main.ejemplar.Ejemplar;
 import main.prestamo.observer.Calendario;
 import main.socio.Socio;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PrestamoController {
@@ -51,4 +52,11 @@ public class PrestamoController {
         }
         return null;
     }
+    public void agregarDias(int dias,int id) {
+    	getPrestamo(id).agregarDias(dias);;
+    }
+    public LocalDate getFechaVec(int idPrestamo) {
+		return getPrestamo(idPrestamo).obtenerFechaVencimiento();
+	}
+    
 }

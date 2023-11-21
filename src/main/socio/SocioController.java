@@ -37,12 +37,12 @@ public class SocioController {
     	socio.setApellido(idBibliotecario, apellidoNuevo, dni);
     }
     
-    public void setMail(int idBibliotecario, String mailNuevo, int dni) {
+    public void setMail(int idBibliotecario, String mailNuevo, double dni) {
     	Socio socio = getSocio(dni);
     	socio.setMail(idBibliotecario, mailNuevo, dni);
     }
     
-    public void setTelefono(int idBibliotecario, int telefonoNuevo, int dni) {
+    public void setTelefono(int idBibliotecario, int telefonoNuevo, double dni) {
     	Socio socio = getSocio(dni);
     	socio.setTelefono(idBibliotecario, telefonoNuevo, dni);
     }
@@ -59,5 +59,9 @@ public class SocioController {
     public ArrayList<String> getModificaciones(double dni){
         return getSocio(dni).getModificaciones();
     }
+    
+    public ArrayList<String> verHistorial(double dni) {
+		return getSocio(dni).verHistorial();
+	}
     	 
 }

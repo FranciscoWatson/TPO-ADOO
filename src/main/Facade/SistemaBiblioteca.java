@@ -58,8 +58,13 @@ public class SistemaBiblioteca {
 
     }
     public ArrayList<Integer> buscarEjemplar(String busqueda){
-        return ejemplarController.buscarEjemplar(busqueda);
+    	ArrayList<Integer> resultado = ejemplarController.buscarEjemplar(busqueda);
+    	for (int i = 0; i < resultado.size(); i++){
+            System.out.println("Id del libro obtenido: " + resultado.get(i));
+    	}
+        return resultado;
     }
+    
     public void devolverPrestamo(int idPrestamo){
         prestamoController.devolverPrestamo(idPrestamo);
     }
@@ -76,9 +81,11 @@ public class SistemaBiblioteca {
         return prestamoController;
     }
 
-    public String verHistorialPrestamo(){
-
-        return null;
+    public void verHistorialPrestamo(double dni){
+    	ArrayList<String>historialPrestamos = socioController.verHistorial(dni);
+        for (int i = 0; i < historialPrestamos.size(); i++){
+            System.out.println(historialPrestamos.get(i));
+        }
     }
 
     public ArrayList<Integer> buscarUbicacion(int idEjemplar){
@@ -105,4 +112,19 @@ public class SistemaBiblioteca {
     public void cambiarEstrategiaNotificacion(int idBiblotecario, double dni, String medioFavNuevo) {
         socioController.setMedioFav(1, medioFavNuevo, dni);
     }
+    
+    public void cambiarMail(int idBiblotecario, String mail, double dni){
+        socioController.setMail(idBiblotecario, mail, dni);
+    }
+    
+    public void cambiarTelefono(int idBiblotecario, int nuevoTelefono, double dni){
+        socioController.setTelefono(idBiblotecario, nuevoTelefono, dni);
+    }
+    
+    public void agregarDiasPrestamo(int dias, int idPrestamo) {
+    	prestamoController.agregarDias(dias, idPrestamo);
+    }
+    public LocalDate getFechaVec(int idPrestamo) {
+		return prestamoController.getFechaVec(idPrestamo);
+	}
 }
